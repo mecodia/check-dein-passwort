@@ -1,8 +1,8 @@
-# check dein passwort
+# Check Dein Passwort
 
 This is a HTML5 application which visualized the strength of your passwort. You can find it deployed at [checkdeinpasswort.de](http://checkdeinpasswort.de).
 
-## setup
+## Setup
 
 The app is built with [Brunch](http://brunch.io). To get running you have to:
 
