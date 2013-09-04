@@ -57,32 +57,34 @@ class PasswordModel extends Backbone.Model
     pw = @get("password")
     pw_ = pw.toLowerCase()
 
-    @set "checkCommon", pw_ in @commonPasswords
-    @set "checkVeryShort", 0 < pw.length < 3
-    @set "checkShort", 2 < pw.length < 8
-    @set "checkLong", 15 < pw.length
-    @set "checkJustLetters", /^[a-zA-Z]+$/.test pw
-    @set "checkJustNumbers", /^[0-9]+$/.test pw
-    @set "checkKeyboardPattern", pw.length > 3 and -1 < @keyboardPatterns.indexOf pw_, 0
-    @set "checkJustNumbers", /^[0-9]+$/.test pw
-    @set "checkAlphabetPattern", pw.length > 3 and -1 < @alphabetPatterns.indexOf pw_, 0
-    @set "checkDateOrPhone", pw.length > 3 and /^[0-9.-/\\]+$/.test pw
-    @set "checkWordNumber", pw.length > 3 and /^[0-9]+[a-z]+$|^[a-z]+[0-9]+$/.test pw_
+    # Basic checks:
+    @set "check-red-common", pw_ in @commonPasswords
+    @set "check-red-veryshort", 0 < pw.length < 5
+    @set "check-yellow-short", 4 < pw.length < 8
+    @set "check-yellow-justletters", /^[a-zA-Z]+$/.test pw
+    @set "check-yellow-keyboardpattern", pw.length > 3 and -1 < @keyboardPatterns.indexOf pw_, 0
+    @set "check-yellow-justnumbers", /^[0-9]+$/.test pw
+    @set "check-yellow-alphabetpattern", pw.length > 3 and -1 < @alphabetPatterns.indexOf pw_, 0
+    @set "check-yellow-dateorphone", pw.length > 3 and /^[0-9.-/\\]+$/.test pw
+    @set "check-yellow-wordnumber", pw.length > 3 and /^[0-9]+[a-z]+$|^[a-z]+[0-9]+$/.test pw_
+    @set "check-green-long", 15 < pw.length
 
+    # Complex checks:
     containsName = false
     for name in @names
       if -1 < pw_.indexOf name, 0
         containsName = true
         break
-    @set "checkName", containsName
+    @set "check-yellow-name", containsName
 
     containsWord = false
     for word in @words
       if -1 < pw_.indexOf word, 0
         containsWord = true
         break
-    @set "checkWord", containsWord
+    @set "check-yellow-word", containsWord
 
+    # Strength calculations:
     if pw.length
       charsetSize = 0
       for charset in @charsets
@@ -115,17 +117,28 @@ class ColorStrengthView extends Backbone.View
 
   initialize: ->
     @model.on "change:timeSeconds", =>
+      # Limit the color space according to insecurities:
+      [red, yellow] = false
+      for check in @model.pairs()
+        red = red or check[1] if /^check-red/.test check[0]
+        yellow = yellow or check[1] if /^check-yellow/.test check[0]
+
+      # Calculate gradient position:
       frac = Math.log(@model.get("possibleCombinations")) / Math.log(@model.get("maxCharsetSize"))
 
       if frac < 0
         # blue
         @$el.css "background-color", "#6AA3A4"
+      else if red
+        @$el.css "background-color", "#CE1836"
       else if frac < 5
         # gradient red -> yellow
         r = 206 + (237 - 206) * frac / 5
         g = 24 + (185 - 24) * frac / 5
         b = 54 + (46 - 54) * frac / 5
         @$el.css "background-color", "rgb(#{r.toFixed(0)}, #{g.toFixed(0)}, #{b.toFixed(0)})"
+      else if yellow
+        @$el.css "background-color", "#EDB92E"
       else if frac < 10
         # gradient yellow -> green
         r = 237 + (106 - 237) * (frac - 5) / 5
@@ -135,6 +148,7 @@ class ColorStrengthView extends Backbone.View
       else
         # green
         @$el.css "background-color", "#6AA46B"
+
 
 class ReadableStrengthGenerator
 
@@ -275,6 +289,7 @@ class LargeGermanNumberReadablizer
             readable += "en"
 
     return readable
+
 
 class ResultSharer extends Backbone.View
 
