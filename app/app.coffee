@@ -77,6 +77,17 @@ class PasswordModel extends Backbone.Model
         break
     @set "check-yellow-name", containsName
 
+    containsPattern = false
+    if pw_.length > 5
+      for n in [2..pw_.length/2]
+        ngram = pw_[0..n - 1]
+        # Multiply ngram to cover password length:
+        ngrams = Array(parseInt((pw_.length / n) + 2)).join ngram
+        # Trim ngrams to match password length:
+        ngrams = ngrams[0..pw_.length - 1]
+        containsPattern = containsPattern or pw_ == ngrams
+    @set "check-yellow-pattern", containsPattern
+
     containsWord = false
     for word in @words
       if -1 < pw_.indexOf word, 0
