@@ -57,13 +57,27 @@ class PasswordModel extends Backbone.Model
     pw = @get("password")
     pw_ = pw.toLowerCase()
 
+    # Strength calculations:
+    if pw.length
+      charsetSize = 0
+      for charset in @charsets
+        if charset.regex.test @get "password"
+          charsetSize += charset.size
+
+      @set "charsetSize", charsetSize
+      @set "possibleCombinations", Math.pow charsetSize, pw.length
+      @set "timeSeconds", @get("possibleCombinations") / @get("calculationsSecond")
+    else
+      @set "charsetSize", 0
+      @set "possibleCombinations", 0
+      @set "timeSeconds", 0
+
     # Basic checks:
     @set "check-red-common", pw_ in @commonPasswords
     @set "check-red-veryshort", 0 < pw.length < 5
     @set "check-yellow-short", 4 < pw.length < 8
-    @set "check-yellow-justletters", /^[a-zA-Z]+$/.test pw
+    @set "check-yellow-charsetsize", pw.length > 0 and @get("charsetSize") < 62
     @set "check-yellow-keyboardpattern", pw.length > 3 and -1 < @keyboardPatterns.indexOf pw_, 0
-    @set "check-yellow-justnumbers", /^[0-9]+$/.test pw
     @set "check-yellow-alphabetpattern", pw.length > 3 and -1 < @alphabetPatterns.indexOf pw_, 0
     @set "check-yellow-dateorphone", pw.length > 3 and /^[0-9.-/\\]+$/.test pw
     @set "check-yellow-wordnumber", pw.length > 3 and /^[0-9]+[a-z]+$|^[a-z]+[0-9]+$/.test pw_
@@ -94,21 +108,6 @@ class PasswordModel extends Backbone.Model
         containsWord = true
         break
     @set "check-yellow-word", containsWord
-
-    # Strength calculations:
-    if pw.length
-      charsetSize = 0
-      for charset in @charsets
-        if charset.regex.test @get "password"
-          charsetSize += charset.size
-
-      @set "charsetSize", charsetSize
-      @set "possibleCombinations", Math.pow charsetSize, pw.length
-      @set "timeSeconds", @get("possibleCombinations") / @get("calculationsSecond")
-    else
-      @set "charsetSize", 0
-      @set "possibleCombinations", 0
-      @set "timeSeconds", 0
 
 
 class PasswordInputView extends Backbone.View
