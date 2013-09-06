@@ -109,6 +109,8 @@ class PasswordModel extends Backbone.Model
         break
     @set "check-yellow-word", containsWord
 
+    @trigger "update"
+
 
 class PasswordInputView extends Backbone.View
 
@@ -126,7 +128,7 @@ class ColorStrengthView extends Backbone.View
   el: "body"
 
   initialize: ->
-    @model.on "change:timeSeconds", =>
+    @model.on "update", =>
       # Limit the color space according to insecurities:
       [red, yellow] = false
       for check in @model.pairs()
