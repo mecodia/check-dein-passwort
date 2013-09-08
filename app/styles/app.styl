@@ -8,11 +8,15 @@ textareafocus,
 buttonfocus
     outline none
 
-a, ahover, afocus
+a, a:hover, a:focus
     color #ffe1a5
 
-footer a, ahover, afocus
+footer a, footer a:hover, footer a:focus
     color white
+
+#time-sentence a, #time-sentence a:hover, #time-sentence a:focus
+    color white
+    text-decoration none
 
 html
     height 100%
@@ -48,6 +52,9 @@ body
 .alert 
     margin 20px 10px
 
+.popover-content
+    color #555
+
 #password 
     background-color #e6eef6
     font-weight bold
@@ -80,14 +87,15 @@ footer
     border-top 1px solid #111
     width 100%
 
-footer .btn 
+footer .btn
     padding 3px 6px
 
-footer .btn:hover 
-    color $background-color
-
+footer .btn:hover,
 footer .btn:focus
     color $background-color
+
+#time-sentence sup img
+    vertical-align baseline
 
 /* Some special fixes for small devices (iPhone & Co) */
 @media only screen and (min-device-width : 320px) and (max-device-width : 480px)
@@ -106,25 +114,3 @@ footer .btn:focus
 
 footer p 
     padding 10px 10px 0 10px
-
-#details-toggle 
-    cursor pointer
-    margin-bottom 20px
-
-#details-toggle .chevron-hide
-    display inline
-
-#details-toggle .chevron-show
-    display none
-
-#details-toggle.collapsed .chevron-hide
-    display none
-
-#details-toggle.collapsed .chevron-show
-    display inline
-
-#details .box 
-    margin-bottom 40px
-    background-color rgba(17, 17, 17, 0.05)
-    border-radius 8px
-    padding 10px

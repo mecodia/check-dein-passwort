@@ -255,16 +255,33 @@ class RisksView extends Backbone.View
 
 class DetailsView extends Backbone.View
 
-  el: "#details"
+  template: _.template """
+    <div id="details" style="padding-top: 10px;">
+        <p><strong>Passwortlänge:</strong> <span id="length"><%= length %></span></p>
+        <p><strong>Zeichenraumgröße:</strong> <span id="charset-size"><%= charsetSize %></span></p>
+        <p>
+            <strong>Mögliche Kombinationen:</strong><br>
+            <span id="possible-combinations"><%= possibleCombinations %></span>
+        </p>
+        <p>
+            <strong>Berechnungen pro Sekunde:</strong><br>
+            <span id="calculations-second"><%= calculationsSecond %></span>
+        </p>
+    </div>"""
 
   initialize: ->
     @readablizer = new LargeGermanNumberReadablizer "Eine", "Unendlich"
-    @$el.find("#calculations-second").text @readablizer.readablize @model.get("calculationsSecond")
-
-    @model.on "change", =>
-      @$el.find("#length").text @model.get("password").length
-      @$el.find("#charset-size").text @model.get("charsetSize")
-      @$el.find("#possible-combinations").text @readablizer.readablize @model.get("possibleCombinations")
+    @model.on "update", =>
+      $("#details-toggle").popover "destroy"
+      $("#details-toggle").popover
+        html: true
+        container: "body"
+        placement: "bottom"
+        content: @template
+          length: @model.get("password").length
+          charsetSize: @model.get("charsetSize")
+          possibleCombinations: @readablizer.readablize @model.get("possibleCombinations")
+          calculationsSecond: @readablizer.readablize @model.get("calculationsSecond")
 
 
 class LargeGermanNumberReadablizer
@@ -311,28 +328,23 @@ class LargeGermanNumberReadablizer
 class ResultSharer extends Backbone.View
 
   el: "#share-result"
-  template: _.template """
-    <p>Teile dein Ergebnis!</p>
-    <p>
-      <a class="btn btn-xs btn-default" href="<%= fb_link %>" target="_blank">Facebook</a>
-      <a class="btn btn-xs btn-default" href="<%= twitter_link %>" target="_blank">Twitter</a>
-    </p>
-  """
 
   initialize: ->
     @readableGenerator = new ReadableStrengthGenerator
 
     @model.on "change", =>
-
       fb_link = "https://www.facebook.com/dialog/feed?" + $.param
         app_id: 460997397341722
         redirect_uri: 'http://checkdeinpasswort.de'
         link: 'http://checkdeinpasswort.de'
         name: "Wie sicher ist mein Passwort?"
         description: "Ein herkömmlicher PC kann mein Passwort innerhalb von #{@readableGenerator.get @model.get 'timeSeconds'} knacken!"
+
       twitter_link = "http://twitter.com/home/?" + $.param
         status: """Ein herkömmlicher PC kann mein Passwort innerhalb von #{@readableGenerator.get @model.get 'timeSeconds'} knacken!\n\nhttp://checkdeinpasswort.de"""
-      @$el.html @template {fb_link, twitter_link}
+
+      @$el.find(".fb-link").attr "href", fb_link
+      @$el.find(".tw-link").attr "href", twitter_link
 
 
 module.exports.run = ->

@@ -52,26 +52,16 @@
         <div class="center row">
             <p id="time-sentence">
                 Ein herkömmlicher PC könnte dein Passwort innerhalb von <br>
-                <span id="time"></span> knacken.<br>
-                <small style="font-size: 8pt">Der Seitenbetreiber gibt keine Gewähr auf die Angabe und deren Korrektheit.</small>
+                <span id="time"></span> knacken.
+                <sup>
+                    <a id="details-toggle" class="glyphicon glyphicon-cog" href="#"></a>
+                    <span id="share-result">
+                        <a href="" class="fb-link" target="_blank"><img src="img/glyphicons-facebook-halfling.png"></a>
+                        <a href="" class="tw-link" target="_blank"><img src="img/glyphicons-twitter-halfling.png"></a>
+                    </span>
+                </sup>
             </p>
-            <div id="share-result"></div>
-            <div id="details-toggle" class="collapsed" data-toggle="collapse" data-target="#details">
-                <span class="glyphicon glyphicon-chevron-down chevron-show"></span>
-                <span class="glyphicon glyphicon-chevron-up chevron-hide"></span>
-                <small>Details</small>
-            </div>
-        </div>
-
-        <div id="details" class="collapse row">
-            <div class="col-lg-6 col-lg-offset-3">
-                <div class="box">
-                    <p><strong>Passwortlänge:</strong> <span id="length"></span></p>
-                    <p><strong>Zeichenraumgröße:</strong> <span id="charset-size"></span></p>
-                    <p><strong>Mögliche Kombinationen:</strong> <span id="possible-combinations"></span></p>
-                    <p><strong>Berechnungen pro Sekunde:</strong> <span id="calculations-second"></span></p>
-                </div>
-            </div>
+            <small style="font-size: 8pt">(Der Seitenbetreiber gibt keine Gewähr auf die Angabe und deren Korrektheit.)</small>
         </div>
     </div>
 
