@@ -277,6 +277,7 @@ class DetailsView extends Backbone.View
         html: true
         container: "body"
         placement: "bottom"
+        trigger: "hover"
         content: @template
           length: @model.get("password").length
           charsetSize: @model.get("charsetSize")
