@@ -123,11 +123,11 @@ class PasswordInputView extends Backbone.View
     @model.set "password", @$el.val()
     # show and hide badge and guide
     if @model.get("password").length > 0
-      $("#kml-label").hide()
-      $("#badge,#guide,#kml,#quote").hide({duration: 100, easing: "linear"}).parent().hide({duration: 100, easing: "linear"})
+      $(".autohide").hide()
+      $(".autohide-animate").hide({duration: 100, easing: "linear"}).parent().hide({duration: 100, easing: "linear"})
     else
-      $("#kml-label").show()
-      $("#badge,#guide,#kml,#quote").show({duration: 100, easing: "linear"}).parent().show()
+      $(".autohide").show()
+      $(".autohide-animate").show({duration: 100, easing: "linear"}).parent().show()
 
 
 class ColorStrengthView extends Backbone.View
