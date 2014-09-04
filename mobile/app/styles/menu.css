@@ -1,0 +1,112 @@
+.nav {
+    margin-bottom: 20px;
+}
+
+.nav > li.disabled.nav-header > a {
+    cursor: default;
+    font-weight: bold;
+    text-transform: uppercase;
+    color: #777d8c;
+    font-size: 10px;
+    border-bottom-width: 2px !important;
+    text-shadow: 0.5px 0.5px 0 #222222;
+}
+
+.menu {
+    position: fixed;
+    left: -240px;
+    width: 300px;
+    height: 100%;
+    top: 0;
+    z-index: 10;
+    text-align: left;
+}
+
+.menu.menu-open {
+    left: 0;
+}
+
+.menu-wrap {
+    position: absolute;
+    top: 0;
+    right: 60px;
+    background: #2c323f;
+    width: 240px;
+    height: 100%;
+    overflow: auto;
+}
+
+.menu .nav-stacked > li {
+    display: block;
+    margin: 0;
+}
+
+.menu li.active {
+    background-color: #52648b;
+}
+
+.menu li a {
+    border-bottom: 1px solid #3f4552;
+    color: white;
+}
+
+.menu li a:hover {
+    background-color: transparent;
+}
+
+.body-push {
+    overflow-x: hidden;
+    position: relative;
+    right: 0;
+}
+
+.body-push-toleft {
+    right: 200px;
+}
+
+.body-push-toright {
+    right: -200px;
+}
+
+.menu, .body-push {
+    -webkit-transition: all .3s ease;
+    -moz-transition: all .3s ease;
+    -ms-transition: all .3s ease;
+    -o-transition: all .3s ease;
+    transition: all .3s ease;
+}
+
+#menuToggle {
+    position: absolute;
+    top: 30px;
+    right: 0;
+    z-index: 1000;
+    display: block;
+    text-align: center;
+    font-size: 14px;
+    color: #fff;
+    width: 40px;
+    height: 40px;
+    line-height: 40px;
+    cursor: pointer;
+    background: rgba(0, 0, 0, .2);
+    -webkit-transition: all .1s ease-in-out;
+    -moz-transition: all .1s ease-in-out;
+    -ms-transition: all .1s ease-in-out;
+    -o-transition: all .1s ease-in-out;
+    transition: all .1s ease-in-out;
+}
+
+#menuToggle:hover {
+    color: #fff;
+    background: rgba(0, 0, 0, .2);
+    -webkit-transition: all .1s ease-in-out;
+    -moz-transition: all .1s ease-in-out;
+    -ms-transition: all .1s ease-in-out;
+    -o-transition: all .1s ease-in-out;
+    transition: all .1s ease-in-out;
+}
+
+#menu-list {
+    margin-top: 10px;
+}

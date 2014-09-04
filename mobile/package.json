@@ -1,0 +1,11 @@
+{
+  "name": "cdp-mobile",
+  "version": "0.0.1",
+  "description": "mobile apps for check-dein-passwort",
+  "author": "mecodia GmbH",
+  "dependencies": {
+    "coffee-script-brunch": "^1.8.0",
+    "css-brunch": "^1.7.0",
+    "javascript-brunch": "^1.7.1"
+  }
+}

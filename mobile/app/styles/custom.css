@@ -1,0 +1,194 @@
+/* Webfonts
+-------------------------------------------------- */
+@font-face {
+    font-family: 'Amatic SC';
+    src: url('../fonts/amaticsc-bold-webfont.eot');
+    src: url('../fonts/amaticsc-bold-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/amaticsc-bold-webfont.woff') format('woff'),
+         url('../fonts/amaticsc-bold-webfont.ttf') format('truetype'),
+         url('../fonts/amaticsc-bold-webfont.svg#amatic_scbold') format('svg');
+    font-weight: bold;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Amatic SC';
+    src: url('../fonts/amaticsc-regular-webfont.eot');
+    src: url('../fonts/amaticsc-regular-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/amaticsc-regular-webfont.woff') format('woff'),
+         url('../fonts/amaticsc-regular-webfont.ttf') format('truetype'),
+         url('../fonts/amaticsc-regular-webfont.svg#amatic_scregular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Roboto Bold Condensed';
+    src: url('../fonts/RobotoCondensed-Bold-webfont.eot');
+    src: url('../fonts/RobotoCondensed-Bold-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/RobotoCondensed-Bold-webfont.woff') format('woff'),
+         url('../fonts/RobotoCondensed-Bold-webfont.ttf') format('truetype'),
+         url('../fonts/RobotoCondensed-Bold-webfont.svg#roboto_condensedbold') format('svg');
+    font-weight: bold;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Roboto Condensed';
+    src: url('../fonts/RobotoCondensed-Regular-webfont.eot');
+    src: url('../fonts/RobotoCondensed-Regular-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/RobotoCondensed-Regular-webfont.woff') format('woff'),
+         url('../fonts/RobotoCondensed-Regular-webfont.ttf') format('truetype'),
+         url('../fonts/RobotoCondensed-Regular-webfont.svg#roboto_condensedregular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Roboto Light Condensed';
+    src: url('../fonts/RobotoCondensed-Light-webfont.eot');
+    src: url('../fonts/RobotoCondensed-Light-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/RobotoCondensed-Light-webfont.woff') format('woff'),
+         url('../fonts/RobotoCondensed-Light-webfont.ttf') format('truetype'),
+         url('../fonts/RobotoCondensed-Light-webfont.svg#roboto_condensedlight') format('svg');
+    font-weight: 300;
+    font-style: normal;
+}
+
+
+/* General
+-------------------------------------------------- */
+* {
+    -webkit-touch-callout: none;
+    -webkit-user-select: none; /* Disable selection/copy in UIWebView */
+}
+
+input {
+    -webkit-user-select: auto !important;
+}
+
+html {
+    height: 100%;
+}
+
+body {
+    font-family: "Roboto Condensed", "Helvetica Neue", sans-serif;
+    background-color: #f9f9f9;
+    line-height: 1.7em;
+    font-size: 16px;
+    height: 100%;
+}
+
+.view {
+    display: none;
+}
+
+p {
+    text-align: justify;
+}
+
+.lead {
+    font-size: 24px;
+}
+
+
+/* Title
+-------------------------------------------------- */
+#title {
+    font-family: "Amatic SC", cursive;
+    font-size: 70px;
+    text-align: center;
+    font-weight: bold;
+    margin-top: 80px;
+    margin-bottom: 20px;
+}
+
+
+/* Alerts
+-------------------------------------------------- */
+.alert h1, h2, h3, h4, h5, h6 {
+    margin-top: 0;
+    font-weight: bold;
+    font-family: "Amatic SC", cursive;
+}
+
+.alert, .card {
+    border-radius: 2px;
+    box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.26);
+    display: block;
+    padding: 10px;
+    margin-bottom: 20px;
+    background: #ffffff;
+}
+
+.alert {
+    border-left: 9px solid;
+}
+
+.card > p {
+    margin-bottom: 0;
+}
+
+
+/* Check-View
+-------------------------------------------------- */
+.container {
+    max-width: 800px;
+}
+
+#password {
+    font-size: 25px;
+    text-align: center;
+    margin-top: 11px;
+    margin-bottom: 0;
+}
+
+#password.form-control {
+    height: auto !important;
+}
+
+#time {
+    font-weight: bold;
+}
+
+#result {
+    background-color: #eee;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+}
+
+#checks {
+    margin-top: 10px;
+}
+
+
+/* Header
+-------------------------------------------------- */
+#main-header {
+    margin-top: 10px;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+.header {
+    border-bottom: 3px solid #333;
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 88px;
+    background: #fff;
+    width: 100%;
+    text-align: center;
+}
+
+.header h2 {
+    margin-top: 28px;
+    font-size: 34px;
+    font-weight: bold;
+}
+
+.body {
+    margin-top: 100px;
+    padding-left: 10px;
+    padding-right: 10px;
+}

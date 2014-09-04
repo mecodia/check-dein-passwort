@@ -1,0 +1,11 @@
+{
+  "name": "cdplib",
+  "version": "1.0.0",
+  "description": "Shared code between check-dein-passwort apps.",
+  "main": "build/cdplib.js",
+  "author": "mecodia GmbH",
+  "dependencies": {
+    "coffee-script-brunch": "^1.8.0",
+    "javascript-brunch": "^1.7.1"
+  }
+}
