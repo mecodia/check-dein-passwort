@@ -66,13 +66,13 @@ class ResultSharer extends Backbone.View
 
       fb_link = "https://www.facebook.com/dialog/feed?" + $.param
         app_id: 460997397341722
-        redirect_uri: 'http://checkdeinpasswort.de'
-        link: 'http://checkdeinpasswort.de'
+        redirect_uri: 'https://checkdeinpasswort.de'
+        link: 'https://checkdeinpasswort.de'
         name: "Wie sicher ist mein Passwort?"
         description: description
 
-      twitter_link = "http://twitter.com/home/?" + $.param
-        status: description + "\n\nhttp://checkdeinpasswort.de"
+      twitter_link = "https://twitter.com/home/?" + $.param
+        status: description + "\n\nhttps://checkdeinpasswort.de"
 
       @$el.find(".fb-link").attr "href", fb_link
       @$el.find(".tw-link").attr "href", twitter_link
