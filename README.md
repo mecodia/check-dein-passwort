@@ -4,7 +4,7 @@ All the code of the website and mobile applications. Look into the different fol
 
 ## cdplib
 
-Shared features between platforms.
+Shared features between platforms. Build this first.
 
 ## web
 
