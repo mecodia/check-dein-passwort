@@ -13,9 +13,11 @@ class PasswordInputView extends Backbone.View
     if @model.get("password").length > 0
       $(".autohide").hide()
       $(".autohide-animate").hide({duration: 100, easing: "linear"}).parent().hide({duration: 100, easing: "linear"})
+      $("#guide-promo").show()
     else
       $(".autohide").show()
       $(".autohide-animate").show({duration: 100, easing: "linear"}).parent().show()
+      $("#guide-promo").hide()
 
 
 class DetailsView extends Backbone.View
