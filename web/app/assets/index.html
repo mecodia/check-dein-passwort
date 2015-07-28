@@ -22,12 +22,6 @@
         <script src="js/ie.js"></script>
     <![endif]-->
     <script src="js/app.js"></script>
-    <script type="text/javascript">
-        $(document).ready(function(){
-            require('app').run();
-            $('[data-toggle=tooltip]').tooltip()
-        });
-    </script>
 </head>
 <body>
 
@@ -201,6 +195,8 @@
 
 <script>
     document.addEventListener('DOMContentLoaded', function(event) {
+        require('app').run();
+        $('[data-toggle=tooltip]').tooltip()
         cookieChoices.showCookieConsentBar('Wir verwenden Cookies, um Ihnen den bestmöglichen Service zu gewährleisten. Wenn Sie auf der Seite weitersurfen stimmen Sie der Cookie-Nutzung zu.',
         'Ich stimme zu.', 'Weitere Infos', '/datenschutz.html');
     });
