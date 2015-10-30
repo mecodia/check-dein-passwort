@@ -52,34 +52,6 @@ class DetailsView extends Backbone.View
           calculationsSecond: @readablizer.readablize @model.get("calculationsSecond")
 
 
-class ResultSharer extends Backbone.View
-
-  el: "#share-result"
-
-  initialize: ->
-    @readableGenerator = new cdplib.ReadableStrengthGenerator
-
-    @model.on "change", =>
-
-      if @model.get "instantly"
-        description = "Ein herkömmlicher PC kann mein Passwort sofort knacken!"
-      else
-        description = "Ein herkömmlicher PC kann mein Passwort innerhalb von #{@readableGenerator.get @model.get 'timeSeconds'} knacken!"
-
-      fb_link = "https://www.facebook.com/dialog/feed?" + $.param
-        app_id: 460997397341722
-        redirect_uri: 'https://checkdeinpasswort.de'
-        link: 'https://checkdeinpasswort.de'
-        name: "Wie sicher ist mein Passwort?"
-        description: description
-
-      twitter_link = "https://twitter.com/home/?" + $.param
-        status: description + "\n\nhttps://checkdeinpasswort.de"
-
-      @$el.find(".fb-link").attr "href", fb_link
-      @$el.find(".tw-link").attr "href", twitter_link
-
-
 module.exports.run = ->
   passwordModel = new cdplib.PasswordModel
   new cdplib.ColorStrengthView model: passwordModel
@@ -87,5 +59,4 @@ module.exports.run = ->
   new cdplib.RisksView model: passwordModel
   new PasswordInputView model: passwordModel
   new DetailsView model: passwordModel
-  new ResultSharer model: passwordModel
   true
