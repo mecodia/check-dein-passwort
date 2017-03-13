@@ -1,5 +1,7 @@
 exports.config =
   # See http://brunch.io/#documentation for docs.
+  npm:
+    enabled: false
   modules:
     wrapper: false
     definition: false
@@ -9,4 +11,3 @@ exports.config =
   files:
     javascripts:
       joinTo: 'cdplib.js': /^src/
-      order: ['models.coffee']
