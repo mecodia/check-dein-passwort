@@ -5,7 +5,6 @@
   "main": "build/cdplib.js",
   "author": "mecodia GmbH",
   "dependencies": {
-    "coffee-script-brunch": "^1.8.0",
-    "javascript-brunch": "^1.7.1"
+    "coffee-script-brunch": "^2.10.1"
   }
 }
