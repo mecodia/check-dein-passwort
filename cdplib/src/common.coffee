@@ -132,7 +132,7 @@ class ColorStrengthView extends Backbone.View
 
       if frac < 0
         # the color it had before
-        @$el.css "background-color", original_color 
+        @$el.css "background-color", original_color
       else if red
         @$el.css "background-color", "#CE1836"
       else if frac < 5
@@ -223,7 +223,7 @@ class PasswordModel extends Backbone.Model
     @alphabetPatterns = "abcdefghijklmnopqrstuvwxyz"
     @alphabetPatterns += @alphabetPatterns.split("").reverse().join ""
 
-    @set "calculationsSecond", 4000000000
+    @set "calculationsSecond", 10000000000
     @set "maxCharsetSize", _.reduce @charsets, (x, y) ->
       (x.size or x) + y.size
 
