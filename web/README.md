@@ -8,8 +8,8 @@ You can find it deployed at [checkdeinpasswort.de](http://checkdeinpasswort.de).
 The app is built with [Brunch](http://brunch.io). To get running you have to:
 
 * Install [Brunch](http://brunch.io): `npm install -g brunch`.
-* Install Brunch plugins: `npm install`.
-* Link the cdp library to this project: `ln -sf ../../cdplib/build/cdplib.js app/cdplib.js`.
+* Go to the cdplib folder and Install Brunch plugins: `npm install`.
+* Go to the web folder and Link the cdp library to this project: `ln -sf ../../cdplib/build/cdplib.js app/cdplib.js`.
 * Watch the project with continuous rebuild by `brunch watch --server`. This will also launch an HTTP server.
 * You can build the minified project with `brunch build --production`.
 
