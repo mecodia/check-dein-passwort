@@ -5,13 +5,12 @@ The built product will be put in the `build` folder. Other projects should symli
 
 ## Installation
 
-    npm install -g brunch
     npm install
 
 ## Build for/during development
 
-    brunch watch
+    npm run dev
 
 ## Build for production
 
-    brunch build --production
+    npm run build
