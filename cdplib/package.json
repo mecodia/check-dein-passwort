@@ -4,7 +4,12 @@
   "description": "Shared code between check-dein-passwort apps.",
   "main": "build/cdplib.js",
   "author": "mecodia GmbH",
-  "dependencies": {
-    "coffee-script-brunch": "^2.10.1"
+  "devDependencies": {
+    "brunch": "^2.10.10",
+    "coffee-script-brunch": "^2.10.2"
+  },
+  "scripts": {
+    "dev": "brunch watch",
+    "build": "brunch build --production"
   }
 }

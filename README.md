@@ -8,4 +8,4 @@ Shared features between platforms. Build this first.
 
 ## web
 
-Code to build a web site.
+Code to build a web site. Start reading that README first.
