@@ -21,7 +21,7 @@ class LargeGermanNumberReadablizer
     else
       factor = parseInt(number / Math.pow(1000, exponent))
 
-      if factor == 1s
+      if factor == 1
         if exponent == 1
           readable = @numberNames[exponent]
         else
