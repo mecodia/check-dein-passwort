@@ -3,8 +3,8 @@ class LargeGermanNumberReadablizer
   constructor: (@article, @tooLarge) ->
     # http://de.wikipedia.org/wiki/Zahlennamen#Billion.2C_Billiarde_und_dar.C3.BCber_hinaus
     @numberNames =
-      ["", "Tausend", "Million", "Milliarde", "Billion", "Billiarde", "Trillion", "Trilliarde", "Quadrillion",
-       "Quadrilliarde", "Quintillion", "Quintilliarde", "Sextillion", "Sextilliarde", "Septillion", "Septilliarde",
+      ["", "Thousand", "Million", "Billion", "Trillion", "Quadrillion", "Quintillion", "Sextillion", "Septillion",
+       "Octillion", "Nonillion", "Decillion", "Undecillion", "Duodecillion", "Tredecillion", "Quattuordecillion",
        "Oktillion", "Oktilliarde", "Nonillion", "Nonilliarde", "Dezillion", "Dezilliarde", "Undezillion",
        "Undezilliarde", "Dodezillion", "Dodezilliarde", "Tredezillion", "Tredezilliarde", "Quattuordezillion",
        "Quattuordezilliarde", "Quindezillion", "Quindezilliarde", "Sedezillion", "Sedezilliarde", "Septendezillion",
@@ -32,9 +32,9 @@ class LargeGermanNumberReadablizer
         # Append correct suffix:
         if exponent > 1
           if exponent % 2
-            readable += "n"
+            readable += ""
           else
-            readable += "en"
+            readable += ""
     return readable
 
 
@@ -46,13 +46,13 @@ class ReadableStrengthGenerator
   get: (seconds) ->
     # Seconds:
     if seconds < 1
-      return "#{seconds.toFixed(10)} Sekunden"
+      return "#{seconds.toFixed(10)} seconds"
 
     if seconds.toFixed(0) == "1"
       return "einer Sekunde"
 
     if seconds < 60
-      return "#{seconds.toFixed(0)} Sekunden"
+      return "#{seconds.toFixed(0)} seconds"
 
     # Minutes:
     minutes = seconds / 60
@@ -61,7 +61,7 @@ class ReadableStrengthGenerator
       return "einer Minute"
 
     if minutes < 60
-      return "#{minutes.toFixed(0)} Minuten"
+      return "#{minutes.toFixed(0)} minutes"
 
     # Hours:
     hours = minutes / 60
@@ -70,7 +70,7 @@ class ReadableStrengthGenerator
       return "einer Stunde"
 
     if hours < 24
-      return "#{hours.toFixed(0)} Stunden"
+      return "#{hours.toFixed(0)} hours"
 
     # Days:
     days = hours / 24
@@ -79,15 +79,15 @@ class ReadableStrengthGenerator
       return "einem Tag"
 
     if days < 365
-      return "#{days.toFixed(0)} Tagen"
+      return "#{days.toFixed(0)} days"
 
     # Years:
     years = days / 365
 
     if years.toFixed(0) == "1"
-      return "einem Jahr"
+      return "one year"
 
-    return "#{@readablizer.readablize(years)} Jahren"
+    return "#{@readablizer.readablize(years)} years"
 
 
 class ReadableStrengthView extends Backbone.View
@@ -101,7 +101,7 @@ class ReadableStrengthView extends Backbone.View
     @model.on "update", =>
       if @model.get("instantly")
         @$el.find("#time-prefix").hide()
-        @$el.find("#time").text "sofort"
+        @$el.find("#time").text "instantly"
       else if @model.get("timeSeconds")
         @$el.show()
         @$el.find("#time-prefix").show()

@@ -24,14 +24,14 @@ class DetailsView extends Backbone.View
 
   template: _.template """
     <div id="details" style="padding-top: 10px;">
-        <p><strong>Passwortlänge:</strong> <span id="length"><%= length %></span></p>
-        <p><strong>Zeichenraumgröße:</strong> <span id="charset-size"><%= charsetSize %></span></p>
+        <p><strong>Password length</strong> <span id="length"><%= length %></span></p>
+        <p><strong>Number of characters:</strong> <span id="charset-size"><%= charsetSize %></span></p>
         <p>
-            <strong>Mögliche Kombinationen:</strong><br>
+            <strong>Possible combinations:</strong><br>
             <span id="possible-combinations"><%= possibleCombinations %></span>
         </p>
         <p>
-            <strong>Berechnungen pro Sekunde:</strong><br>
+            <strong>Calculations per second:</strong><br>
             <span id="calculations-second"><%= calculationsSecond %></span>
         </p>
     </div>"""
