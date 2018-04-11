@@ -45,14 +45,9 @@ class ReadableStrengthGenerator
 
   get: (seconds) ->
     # Seconds:
-    if seconds < 1
-      return "#{seconds.toFixed(10)} Sekunden"
-
-    if seconds.toFixed(0) == "1"
-      return "einer Sekunde"
 
     if seconds < 60
-      return "#{seconds.toFixed(0)} Sekunden"
+      return "<span data-l10n-id='readable-strength-seconds' data-l10n-args='{\"seconds\": #{seconds.toFixed(10)}}'>"
 
     # Minutes:
     minutes = seconds / 60
@@ -105,7 +100,7 @@ class ReadableStrengthView extends Backbone.View
       else if @model.get("timeSeconds")
         @$el.show()
         @$el.find("#time-prefix").show()
-        @$el.find("#time").text @readableGenerator.get @model.get "timeSeconds"
+        @$el.find("#time").html @readableGenerator.get @model.get "timeSeconds"
       else
         @$el.hide()
 

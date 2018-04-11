@@ -9,10 +9,14 @@
 <html><!--<![endif]-->
 <head>
     <meta charset="utf-8">
-    <title>Passwort-Sicherheit-Check: Wie sicher ist mein Passwort?</title>
+    <title data-l10n-id="meta-title">Passwort-Sicherheit-Check: Wie sicher ist mein Passwort?</title>
     <meta name="description" content="Teste dein Passwort: Wie lange braucht ein Hacker mit PC, um dein Passwort zu knacken? Ein gutes Passwort sollte aus Buchstaben, Zahlen und Sonderzeichen bestehen.">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="apple-itunes-app" content="app-id=914037021">
+
+    <meta name="defaultLanguage" content="de">
+    <meta name="availableLanguages" content="de, en">
+    <link rel="localization" href="locales/{locale}.ftl">
 
     <link href='https://fonts.googleapis.com/css?family=Droid+Sans:400,700|Amatic+SC:400,700' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" href="css/vendor.css">
@@ -32,12 +36,12 @@
             <p class="alert alert-danger">Du benutzt einen <strong>veralteten</strong> Browser. Bitte <a class="alert-link" href="http://browsehappy.com/">aktualisiere
                 deinen Browser</a> oder <a class="alert-link" href="http://www.google.com/chromeframe/?redirect=true">aktiviere Google Chrome Frame</a> um dein Erlebnis zu verbessern.</p>
             <![endif]-->
-            <h1 class="title">Wie sicher ist mein Passwort?</h1>
+            <h1 class="title" data-l10n-id=title>Wie sicher ist mein Passwort?</h1>
         </div>
     </div>
     <div class="row">
         <div class="col-lg-8 col-lg-offset-2 center">
-            <input class="form-control" id="password" type="password" placeholder="Welches Passwort möchtest du prüfen?" autofocus="autofocus">
+            <input data-l10n-id=password-input class="form-control" id="password" type="password" placeholder="" autofocus="autofocus">
             <div class="row">
                 <div class="col-sm-4">
                     <a href="/datenschutz.html"><img class="autohide-animate" src="img/datenschutz.png" alt="Datenschutz" style="height: 164px; width: 153px; margin-top: 5px;" /></a>
@@ -69,8 +73,8 @@
     <div id="result">
         <div class="center row">
             <p id="time-sentence">
-                Ein herkömmlicher PC könnte dein Passwort <span id="time-prefix">innerhalb von</span><br>
-                <span id="time"></span> knacken.
+                <span data-l10n-id="time-sentence-intro"></span> <span data-l10n-id="time-sentence-time-prefix" id="time-prefix"></span><br>
+                <span id="time"></span> <span data-l10n-id="time-sentence-outro"></span>
                 <sup>
                     <a id="details-toggle" class="glyphicon glyphicon-cog" href="#"></a>
                 </sup>
@@ -90,14 +94,14 @@
     <div id="checks" class="row">
         <!-- Common -->
         <div class="alert alert-block alert-danger" id="check-red-common">
-            <h2>Dein Passwort wird sehr häufig verwendet!</h2>
-            <p>Es kann sofort geknackt werden!</p>
+            <h2 data-l10n-id=check-red-common-title></h2>
+            <p data-l10n-id=check-red-common-body></p>
         </div>
 
         <!-- Very Short -->
         <div class="alert alert-block alert-danger" id="check-red-veryshort">
-            <h2>Dein Passwort ist sehr kurz!</h2>
-            <p>Je länger ein Passwort ist, desto sicherer ist es!</p>
+            <h2 data-l10n-id="check-red-veryshort-title"></h2>
+            <p data-l10n-id="check-red-veryshort-body"></p>
         </div>
 
         <!-- Name -->
