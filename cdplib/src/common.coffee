@@ -4,12 +4,7 @@ class LargeGermanNumberReadablizer
     # http://de.wikipedia.org/wiki/Zahlennamen#Billion.2C_Billiarde_und_dar.C3.BCber_hinaus
     @numberNames =
       ["", "Thousand", "Million", "Billion", "Trillion", "Quadrillion", "Quintillion", "Sextillion", "Septillion",
-       "Octillion", "Nonillion", "Decillion", "Undecillion", "Duodecillion", "Tredecillion", "Quattuordecillion",
-       "Oktillion", "Oktilliarde", "Nonillion", "Nonilliarde", "Dezillion", "Dezilliarde", "Undezillion",
-       "Undezilliarde", "Dodezillion", "Dodezilliarde", "Tredezillion", "Tredezilliarde", "Quattuordezillion",
-       "Quattuordezilliarde", "Quindezillion", "Quindezilliarde", "Sedezillion", "Sedezilliarde", "Septendezillion",
-       "Septendezilliarde", "Dodevigintillion", "Dodevigintilliarde", "Undevigintillion", "Undevigintilliarde",
-       "Vigintillion", "Vigintilliarde"]
+       "Octillion", "Nonillion", "Decillion", "Undecillion", "Duodecillion", "Tredecillion", "Quattuordecillion"]
 
   readablize: (number) ->
     if not number then return "0"
@@ -29,19 +24,13 @@ class LargeGermanNumberReadablizer
       else
         readable = "#{factor} #{@numberNames[exponent]}"
 
-        # Append correct suffix:
-        if exponent > 1
-          if exponent % 2
-            readable += ""
-          else
-            readable += ""
     return readable
 
 
 class ReadableStrengthGenerator
 
   constructor: ->
-    @readablizer = new LargeGermanNumberReadablizer "einer", "unendlich"
+    @readablizer = new LargeGermanNumberReadablizer "one", "∞"
 
   get: (seconds) ->
     # Seconds:
@@ -49,7 +38,7 @@ class ReadableStrengthGenerator
       return "#{seconds.toFixed(10)} seconds"
 
     if seconds.toFixed(0) == "1"
-      return "einer Sekunde"
+      return "one second"
 
     if seconds < 60
       return "#{seconds.toFixed(0)} seconds"
@@ -58,7 +47,7 @@ class ReadableStrengthGenerator
     minutes = seconds / 60
 
     if minutes.toFixed(0) == "1"
-      return "einer Minute"
+      return "one minute"
 
     if minutes < 60
       return "#{minutes.toFixed(0)} minutes"
@@ -67,7 +56,7 @@ class ReadableStrengthGenerator
     hours = minutes / 60
 
     if hours.toFixed(0) == "1"
-      return "einer Stunde"
+      return "one hour"
 
     if hours < 24
       return "#{hours.toFixed(0)} hours"
@@ -76,7 +65,7 @@ class ReadableStrengthGenerator
     days = hours / 24
 
     if days.toFixed(0) == "1"
-      return "einem Tag"
+      return "one day"
 
     if days < 365
       return "#{days.toFixed(0)} days"
