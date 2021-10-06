@@ -12,8 +12,6 @@
     "brunch": "^4.0.0",
     "clean-css-brunch": "~3.0.0",
     "coffee-script-brunch": "~4.0.0",
-    "css-brunch": "~2.10.0",
-    "javascript-brunch": "~2.10.0",
     "stylus-brunch": "~3.0.0",
     "terser-brunch": "^4.1.0"
   },
