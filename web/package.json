@@ -5,17 +5,15 @@
   "version": "1.0.0",
   "repository": "",
   "scripts": {
-    "dev": "brunch watch --server",
+    "dev": "brunch watch --server --port 3000",
     "build": "brunch build --production"
   },
   "devDependencies": {
-    "brunch": "^2.10.10",
-    "javascript-brunch": "~2.10.0",
-    "css-brunch": "~2.10.0",
-    "uglify-js-brunch": "~2.10.0",
-    "clean-css-brunch": "~2.10.0",
-    "coffee-script-brunch": "~2.10.0",
-    "stylus-brunch": "~2.10.0"
+    "brunch": "^4.0.0",
+    "clean-css-brunch": "~3.0.0",
+    "coffee-script-brunch": "~4.0.0",
+    "stylus-brunch": "~3.0.0",
+    "terser-brunch": "^4.1.0"
   },
   "dependencies": {}
 }
