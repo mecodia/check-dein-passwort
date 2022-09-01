@@ -1,0 +1,19 @@
+{
+  "name": "check-dein-passwort-web",
+  "description": "Website for the check-dein-passwort project.",
+  "author": "mecodia GmbH",
+  "version": "1.0.0",
+  "repository": "",
+  "scripts": {
+    "dev": "brunch watch --server --port 3000",
+    "build": "brunch build --production"
+  },
+  "devDependencies": {
+    "brunch": "^4.0.0",
+    "clean-css-brunch": "~3.0.0",
+    "coffee-script-brunch": "~4.0.0",
+    "stylus-brunch": "~3.0.0",
+    "terser-brunch": "^4.1.0"
+  },
+  "dependencies": {}
+}

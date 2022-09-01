@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>
+<html class="lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>
+<html class="lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>
+<html class="lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!-->
+<html><!--<![endif]-->
+<head>
+    <meta charset="utf-8">
+    <title>Passwort-Sicherheit-Check: Wie sicher ist mein Passwort?</title>
+    <meta name="description" content="Teste dein Passwort: Wie lange braucht ein Hacker mit PC, um dein Passwort zu knacken? Ein gutes Passwort sollte aus Buchstaben, Zahlen und Sonderzeichen bestehen.">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="apple-itunes-app" content="app-id=914037021">
+
+    <link rel="stylesheet" href="css/vendor.css">
+    <link rel="stylesheet" href="css/app.css">
+
+    <!--[if lt IE 9]>
+        <script src="js/ie.js"></script>
+    <![endif]-->
+    <script src="js/app.js"></script>
+</head>
+<body>
+
+<div class="container">
+    <div class="row">
+        <div class="col-lg-12 center">
+            <!--[if lt IE 9]>
+            <p class="alert alert-danger">Du benutzt einen <strong>veralteten</strong> Browser. Bitte <a class="alert-link" href="http://browsehappy.com/">aktualisiere
+                deinen Browser</a> oder <a class="alert-link" href="http://www.google.com/chromeframe/?redirect=true">aktiviere Google Chrome Frame</a> um dein Erlebnis zu verbessern.</p>
+            <![endif]-->
+            <h1 class="title">Wie sicher ist mein Passwort?</h1>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-8 col-lg-offset-2 center">
+            <input class="form-control" id="password" type="password" placeholder="Probiere verschiedene Passwörter aus!" autofocus="autofocus">
+            <p style="margin-bottom: 30px;"><i class="fa fa-warning"></i> Aus Sicherheitsgründen solltest du nicht deine echten Passwörter eingeben.</p>
+            <div class="row">
+                <div class="col-sm-6">
+                    <a href="/faq.html"><img class="autohide-animate" src="img/datenschutz.png" alt="Datenschutz" style="height: 164px; width: 153px; margin-top: 5px;" /></a>
+                </div>
+                <div class="col-sm-6">
+                    <a title="Zum Passwort-Leitfaden" class="thumbnail" style="display: inline-block;" href="https://mecodia-medienkompetenz.de/materialien/anleitung-wie-erstelle-ich-ein-sicheres-passwort-das-ich-mir-merken-kann/" target="_blank"><img class="autohide-animate" src="img/sicheres-passwort_mecodia.png" alt="Datenschutz" style="height: 160px; width: 113px;" /></a>
+                </div>
+            </div>
+            <div class="row">
+              <div class="col-sm-12">
+                <p style="margin-top:10px;" class="autohide">
+                  &bdquo;CheckDeinPasswort.de speichert keinerlei Daten und ist für Benutzer unbedenklich.&ldquo;<br>
+                  <a href="http://www.ra-schuetzle.de/" target="_blank">RA Kai Schützle, Fachanwalt für IT-Recht</a>
+                </p>
+              </div>
+              <div class="col-sm-12">
+                <p style="margin-top:10px;" class="autohide">
+                  Du interessierst dich für Hacker und ihre Methoden?<br> Wir erklären dir: <a href="https://mecodia-medienkompetenz.de/materialien/wie-werden-passwoerter-geknackt/" target="_blank">Wie werden Passwörter geknackt?</a>
+                </p>
+              </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="result">
+        <div class="center row">
+            <p id="time-sentence">
+                Ein herkömmlicher PC könnte dein Passwort <span id="time-prefix">innerhalb von</span><br>
+                <span id="time"></span> knacken.
+                <sup>
+                    <a id="details-toggle" class="glyphicon glyphicon-cog" href="#"></a>
+                </sup>
+                <br>
+            </p>
+            <br>
+            <small style="font-size: 8pt">(Der Seitenbetreiber gibt keine Gewähr auf die Angabe und deren Korrektheit.)</small>
+        </div>
+    </div>
+
+    <noscript>
+        <div class="alert alert-block alert-error">
+            <h2>JavaScript ist deaktiviert!</h2>
+            <p>Aus Sicherheitsgründen funktioniert diese Webseite nur mit JavaScript!</p>
+        </div>
+    </noscript>
+    <div id="checks" class="row">
+        <!-- Common -->
+        <div class="alert alert-block alert-danger" id="check-red-common">
+            <h2>Dein Passwort wird sehr häufig verwendet!</h2>
+            <p>Es kann sofort geknackt werden!</p>
+        </div>
+
+        <!-- Very Short -->
+        <div class="alert alert-block alert-danger" id="check-red-veryshort">
+            <h2>Dein Passwort ist sehr kurz!</h2>
+            <p>Je länger ein Passwort ist, desto sicherer ist es!</p>
+        </div>
+
+        <!-- Name -->
+        <div class="alert alert-block alert-warning" id="check-yellow-name">
+            <h2>Dein Passwort enthält einen Namen!</h2>
+            <p>Namen von Familienmitgliedern oder Prominenten lassen sich leicht erraten!</p>
+        </div>
+
+        <!-- Short -->
+        <div class="alert alert-block alert-warning" id="check-yellow-short">
+            <h2>Dein Passwort ist kurz!</h2>
+            <p>Je länger ein Passwort ist, desto sicherer ist es!</p>
+        </div>
+
+        <!-- Word -->
+        <div class="alert alert-block alert-warning" id="check-yellow-word">
+            <h2>Dein Passwort enthält ein häufig verwendetes Wort!</h2>
+            <p>Versuche Wörter mit Zeichen und Symbolen zu verfremden!<p>
+        </div>
+
+        <!-- Pattern -->
+        <div class="alert alert-block alert-warning" id="check-yellow-pattern">
+            <h2>Dein Passwort enthält ein Muster!</h2>
+            <p>Versuche auf sich wiederholende Zeichenfolgen zu verzichten!<p>
+        </div>
+
+        <!-- Date Or Phone Number -->
+        <div class="alert alert-block alert-warning" id="check-yellow-dateorphone">
+            <h2>Dein Passwort könnte ein Datum oder eine Telefonnummer sein!</h2>
+            <p>Daten oder Telefonnummern sind oft leicht zu erraten!</p>
+        </div>
+
+        <!-- Word And Number -->
+        <div class="alert alert-block alert-warning" id="check-yellow-wordnumber">
+            <h2>Dein Passwort könnte ein Wort mit einer Zahl sein!</h2>
+            <p>Das ist eine beliebte Kombination und wird sehr schnell geknackt!</p>
+        </div>
+
+        <!-- Charset Size -->
+        <div class="alert alert-block alert-warning" id="check-yellow-charsetsize">
+            <h2>Dein Passwort besteht aus sehr wenig Zeichensorten!</h2>
+            <p>Versuche mit <strong>Groß-</strong> und <strong>Kleinschreibung</strong> sowie <strong>Zahlen</strong>
+                und <strong>Sonderzeichen</strong> mehr Abwechslung in dein Passwort zu bringen!</p>
+        </div>
+
+        <!-- Keyboard Pattern -->
+        <div class="alert alert-block alert-warning" id="check-yellow-keyboardpattern">
+            <h2>Dein Passwort besteht aus einer Zeichenfolge auf deiner Tastatur!</h2>
+            <p>Bring ein bisschen mehr Abwechslung ins Spiel!</p>
+        </div>
+
+        <!-- Alphabet Pattern -->
+        <div class="alert alert-block alert-warning" id="check-yellow-alphabetpattern">
+            <h2>Dein Passwort besteht aus einer Zeichenfolge des Alphabets!</h2>
+            <p>Bring ein bisschen mehr Abwechslung ins Spiel!</p>
+        </div>
+
+        <!-- Password Long -->
+        <div class="alert alert-block alert-success" id="check-green-long">
+            <h2>Dein Passwort ist lang!</h2>
+            <p>Dein Passwort besteht aus 16 oder mehr Zeichen!</p>
+        </div>
+
+        <!-- Guide Promotion -->
+        <div class="alert alert-block alert-success" id="guide-promo">
+            <h2>Das geht noch besser?</h2>
+            <p>
+              Wir haben die besten <a style="color:black" href="https://mecodia-medienkompetenz.de/materialien/anleitung-wie-erstelle-ich-ein-sicheres-passwort-das-ich-mir-merken-kann/" target="_blank">Tipps für ein sicheres Passwort</a>.
+            </p>
+            <span class="clearfix"></span>
+        </div>
+    </div>
+</div>
+
+<footer class="hidden-print">
+    <p class="pull-left hidden-xs">
+        Quellen:
+        <a class="btn" href="https://de.wiktionary.org/wiki/Verzeichnis:Deutsch/Namen/die_h%C3%A4ufigsten_weiblichen_Vornamen_Deutschlands" target="_blank" data-toggle="tooltip" title="Liste der häufigsten weiblichen Vornamen Deutschlands"><span class="glyphicon glyphicon-list-alt"></span></a>
+        <a class="btn" href="https://de.wiktionary.org/wiki/Verzeichnis:Deutsch/Namen/die_h%C3%A4ufigsten_m%C3%A4nnlichen_Vornamen_Deutschlands" target="_blank" data-toggle="tooltip" title="Liste der häufigstens männlichen Vornamen Deutschlands"><span class="glyphicon glyphicon-book"></span></a>
+        <a class="btn" href="https://de.wiktionary.org/wiki/Verzeichnis:Deutsch/Namen/die_h%C3%A4ufigsten_Nachnamen_Deutschlands" target="_blank" data-toggle="tooltip" title="Liste der häufigsten Nachnamen Deutschlands"><span class="glyphicon glyphicon-align-left"></span></a>
+        <a class="btn" href="http://wortschatz.uni-leipzig.de/de" target="_blank" data-toggle="tooltip" title="Liste der häufigsten deutschen Wörter"><span class="glyphicon glyphicon-book"></span></a>
+        <a class="btn" href="https://xato.net/today-i-am-releasing-ten-million-passwords-b6278bbe7495" target="_blank" data-toggle="tooltip" title="Top 10.000 Passwörter von Mark Burnett"><span class="glyphicon glyphicon-list"></span></a>
+        <a class="btn" href="https://github.com/mecodia/check-dein-passwort" target="_blank" data-toggle="tooltip" title="Der Quellcode der Anwendung"><span class="glyphicon glyphicon-barcode"></span></a>
+    </p>
+    <p class="pull-right">
+        <a class="btn" href="https://mecodia-medienkompetenz.de/" target="_blank" title="mecodia Webpräsenz">&copy; mecodia Medienkompetenz</a>
+        <a class="btn" href="/faq.html"><span class="glyphicon glyphicon-question-sign"></span> FAQ</a>
+        <a class="btn" href="/datenschutz.html"><span class="glyphicon glyphicon-search"></span> Datenschutz</a>
+        <a class="btn" href="/impressum.html"><span class="glyphicon glyphicon-info-sign"></span> Impressum</a>
+    </p>
+    <p class="visible-xs clearfix"></p>
+</footer>
+
+<script src="js/vendor.js"></script>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function(event) {
+        require('app').run();
+        $('[data-toggle=tooltip]').tooltip()
+        cookieChoices.showCookieConsentBar('Um das Nutzererlebnis auf unserer Webseite für Sie optimal gestalten zu ' +
+            'können, verwenden wir Cookies. Durch die weitere Nutzung der Webseite stimmen Sie der Verwendung von' +
+            ' Cookies zu. Weitere Informationen zu Cookies erhalten Sie in unserer',
+        'Einverstanden', 'Datenschutzerklärung.', '/datenschutz.html');
+    });
+</script>
+
+<!-- Matomo -->
+<script type="text/javascript">
+  var _paq = window._paq || [];
+  /* tracker methods like "setCustomDimension" should be called before "trackPageView" */
+  _paq.push(['trackPageView']);
+  _paq.push(['enableLinkTracking']);
+  (function() {
+    var u="//matomo.mecodia.cloud/";
+    _paq.push(['setTrackerUrl', u+'matomo.php']);
+    _paq.push(['setSiteId', '17']);
+    var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
+    g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'matomo.js'; s.parentNode.insertBefore(g,s);
+  })();
+</script>
+<!-- End Matomo Code -->
+</body>
+</html>
