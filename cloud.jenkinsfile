@@ -14,7 +14,8 @@ mecodiaPipeline(
         ],
         targets: [
             [
-                branch: "main",
+                branch: "production",
+                onTagType: "production",
                 cluster: "apps.prod.mecodia.cloud",
                 release: "check-dein-passwort",
                 valuesFile: "./deployments/check-dein-passwort.yaml"
