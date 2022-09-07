@@ -11,7 +11,7 @@ mecodiaPipeline(
           namespace: "webwuerfel",
           imageTagPath: "image.tag",
           chart: 'mecodia/simple-static-page',
-          version: '^1.0.0'
+          chartVersion: '^1.0.0'
         ],
         targets: [
             [
